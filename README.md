@@ -1,2 +1,213 @@
-# Celebration
-A celebration website for my friend! 🎉
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎉 Celebration Time! 🎉</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .celebration-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 500px;
+            margin: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        h1 {
+            color: #764ba2;
+            font-size: 3em;
+            margin: 0;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .confetti {
+            font-size: 4em;
+            margin: 20px 0;
+        }
+        
+        .message {
+            font-size: 1.5em;
+            color: #333;
+            line-height: 1.6;
+            margin: 30px 0;
+        }
+        
+        .celebrate-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            margin-top: 20px;
+        }
+        
+        .celebrate-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .surprise {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .balloon {
+            display: inline-block;
+            font-size: 2em;
+            margin: 10px;
+            animation: bounce 1s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .music-note {
+            font-size: 1.5em;
+            animation: spin 2s infinite;
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="celebration-card">
+        <div class="confetti">
+            🎉 🎈 🎊
+        </div>
+        
+        <h1>Let's Celebrate!</h1>
+        
+        <div class="message">
+            <p id="personalMessage">🎂 Happy Celebration! 🎂</p>
+            <p>You're invited to an online party!</p>
+        </div>
+        
+        <div class="balloon-container">
+            <span class="balloon">🎈</span>
+            <span class="balloon">🎈</span>
+            <span class="balloon">🎈</span>
+        </div>
+        
+        <button class="celebrate-btn" onclick="startCelebration()">
+            🎉 Click to Celebrate! 🎉
+        </button>
+        
+        <div id="surpriseBox" class="surprise">
+            <h2>🎊 SURPRISE! 🎊</h2>
+            <p id="surpriseMessage">You're awesome!</p>
+            <div style="margin-top: 20px;">
+                <span class="music-note">🎵</span>
+                <span class="music-note">🎶</span>
+                <span class="music-note">🎵</span>
+            </div>
+            <p style="margin-top: 20px; color: #764ba2;">
+                ✨ Celebration mode activated! ✨
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Customize this section with your personal message!
+        const celebrationDetails = {
+            person: "Friend", // Change this to your friend's name
+            occasion: "Celebration", // Change this to birthday, graduation, etc.
+            message: "So glad we can celebrate together online!", // Your personal message
+            surpriseMessage: "You're the best friend ever!" // Your surprise message
+        };
+
+        // Update the page with your custom message
+        document.getElementById('personalMessage').innerHTML = 
+            `🎂 Happy ${celebrationDetails.occasion}, ${celebrationDetails.person}! 🎂`;
+        document.getElementById('surpriseMessage').innerHTML = 
+            celebrationDetails.surpriseMessage;
+
+        function startCelebration() {
+            // Show the surprise box
+            document.getElementById('surpriseBox').style.display = 'block';
+            
+            // Create confetti effect
+            createConfetti();
+            
+            // Play celebration sound (optional - requires user interaction)
+            playCelebrationSound();
+            
+            // Add more balloons
+            addMoreBalloons();
+        }
+        
+        function createConfetti() {
+            for(let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.innerHTML = ['🎉','🎊','✨','🎈'][Math.floor(Math.random() * 4)];
+                    confetti.style.position = 'fixed';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.top = '-10px';
+                    confetti.style.fontSize = '24px';
+                    confetti.style.animation = 'bounce 1s linear';
+                    confetti.style.zIndex = '9999';
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 1000);
+                }, i * 50);
+            }
+        }
+        
+        function playCelebrationSound() {
+            // Simple alert for sound (browsers restrict autoplay)
+            alert("🎵 CELEBRATION TIME! 🎵");
+        }
+        
+        function addMoreBalloons() {
+            const container = document.querySelector('.balloon-container');
+            for(let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    const balloon = document.createElement('span');
+                    balloon.className = 'balloon';
+                    balloon.innerHTML = '🎈';
+                    container.appendChild(balloon);
+                }, i * 200);
+            }
+        }
+        
+        // Add floating animation on load
+        window.onload = function() {
+            console.log("Celebration website loaded! 🎉");
+        };
+    </script>
+</body>
+</html>

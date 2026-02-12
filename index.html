@@ -143,10 +143,10 @@
     <script>
         // Customize this section with your personal message!
         const celebrationDetails = {
-            person: "Friend", // Change this to your friend's name
-            occasion: "Celebration", // Change this to birthday, graduation, etc.
-            message: "So glad we can celebrate together online!", // Your personal message
-            surpriseMessage: "You're the best friend ever!" // Your surprise message
+            person: "Message buddy", // Patttriiiciiiaaaa 
+            occasion: "Licensed", // Licensed 
+            message: "Eyy!  Clapp! claappp!", // Your personal message
+            surpriseMessage: "you're the coolest little pat!" // Your surprise message
         };
 
         // Update the page with your custom message
@@ -162,8 +162,8 @@
             // Create confetti effect
             createConfetti();
             
-            // Play celebration sound (optional - requires user interaction)
-            playCelebrationSound();
+            // Play celebration sound
+            alert("🎵 CELEBRATION TIME! 🎵");
             
             // Add more balloons
             addMoreBalloons();
@@ -187,11 +187,6 @@
             }
         }
         
-        function playCelebrationSound() {
-            // Simple alert for sound (browsers restrict autoplay)
-            alert("🎵 CELEBRATION TIME! 🎵");
-        }
-        
         function addMoreBalloons() {
             const container = document.querySelector('.balloon-container');
             for(let i = 0; i < 5; i++) {
@@ -203,11 +198,6 @@
                 }, i * 200);
             }
         }
-        
-        // Add floating animation on load
-        window.onload = function() {
-            console.log("Celebration website loaded! 🎉");
-        };
     </script>
 </body>
 </html>
